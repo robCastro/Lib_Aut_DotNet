@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TodoApi.Contexts;
@@ -9,9 +10,10 @@ using TodoApi.Contexts;
 namespace TodoApi.Migrations
 {
     [DbContext(typeof(AuthorContext))]
-    partial class AuthorContextModelSnapshot : ModelSnapshot
+    [Migration("20190808190922_books")]
+    partial class books
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,7 +42,7 @@ namespace TodoApi.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long?>("authorid");
+                    b.Property<long>("authorId");
 
                     b.Property<DateTime>("datePub");
 
@@ -48,16 +50,7 @@ namespace TodoApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("authorid");
-
                     b.ToTable("books");
-                });
-
-            modelBuilder.Entity("TodoApi.Models.Book", b =>
-                {
-                    b.HasOne("TodoApi.Models.Author", "author")
-                        .WithMany("books")
-                        .HasForeignKey("authorid");
                 });
 #pragma warning restore 612, 618
         }

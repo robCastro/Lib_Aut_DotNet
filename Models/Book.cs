@@ -7,7 +7,7 @@ namespace TodoApi.Models{
         public long Id {get; set;}
         public string title {get; set;}
         public DateTime datePub {get; set;}        
-        public long authorId {get; set;}
+        public virtual Author author {get; set;}
     }
 
 }

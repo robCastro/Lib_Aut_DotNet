@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace TodoApi.Models{
 
@@ -7,6 +8,8 @@ namespace TodoApi.Models{
         public string firstName {get; set;}
         public string lastName {get; set;}
         public DateTime bornDate {get; set;}
+
+        public virtual ICollection<Book> books {get; set;}
     }
 
 }
